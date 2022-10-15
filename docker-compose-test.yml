@@ -1,8 +1,8 @@
 version: "3"
 services:
-  postgres_db_test:
+  postgres_db:
     image: postgres
-    container_name: postgres_db_test
+    container_name: postgres_db
     restart: always
     ports:
       - 4457:5432
@@ -16,7 +16,7 @@ services:
     ports:
       - 5000:5000
     depends_on:
-      - postgres_db_test
+      - postgres_db
     env_file:
       - back-end/.env.test
     
@@ -34,7 +34,7 @@ services:
     volumes:
       - build_react:/var/www/html
     depends_on:
-      - postgres_db_test
+      - postgres_db
       - node_app
       - react_app
 
